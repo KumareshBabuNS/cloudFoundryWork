@@ -1,3 +1,6 @@
+- Started from https://docs.cloudfoundry.org/buildpacks/java/gsg-spring.html
+
+
 # CF example app: ping-pong matching server
 
 This is an app to match ping-pong players with each other. It's currently an

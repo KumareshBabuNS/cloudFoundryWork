@@ -14,7 +14,7 @@
     </parent>
 
     <groupId>io.pivotal</groupId>
-    <artifactId>pong-matcher-spring</artifactId>
+    <artifactId>cloudFoundryWork</artifactId>
     <version>1.0.0.BUILD-SNAPSHOT</version>
     <packaging>jar</packaging>
 
@@ -23,7 +23,6 @@
     </properties>
 
 <!-- code_snippet gsg-spring-s3 start -->
-
     <dependencies>
         <dependency>
             <groupId>mysql</groupId>
@@ -57,7 +56,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
 <!-- code_snippet gsg-spring-s3 end -->
 
     <build>

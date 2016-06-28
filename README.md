@@ -82,6 +82,8 @@ It has an [acceptance test suite][acceptance-test] you might like to look at.
 - To verify the status in the web UI
     - https://console.run.pivotal.io/ with brossierp@gmail.com
 
+- export HOST=http://philippeSubDomain.cfapps.io
+
 - To delete the app if required:
     - cf delete cloudFoundryWork
 
@@ -89,8 +91,6 @@ It has an [acceptance test suite][acceptance-test] you might like to look at.
 ###################################################
 # To test
 ###################################################
-export HOST=http://philippeSubDomain.cfapps.io
-
 - To clear the database from any previous tests:
     - curl -v -X DELETE $HOST/all
     200
@@ -115,37 +115,21 @@ export HOST=http://philippeSubDomain.cfapps.io
 ###################################################
 # Running locally
 ###################################################
-Install and start mysql:
+- Install and start mysql:
+    - yum install mysql
+    - mysql.server start
+    - mysql -u root
 
-```bash
-brew install mysql
-mysql.server start
-mysql -u root
-```
+- Create a database user and table in the MySQL REPL you just opened:
+    - CREATE USER 'springpong'@'localhost' IDENTIFIED BY 'springpong';
+    - CREATE DATABASE pong_matcher_spring_development;
+    - GRANT ALL ON pong_matcher_spring_development.* TO 'springpong'@'localhost';
+    - exit
 
-Create a database user and table in the MySQL REPL you just opened:
+- Start the application server from your IDE or the command line:
+    - mvn spring-boot:run
 
-```sql
-CREATE USER 'springpong'@'localhost' IDENTIFIED BY 'springpong';
-CREATE DATABASE pong_matcher_spring_development;
-GRANT ALL ON pong_matcher_spring_development.* TO 'springpong'@'localhost';
-exit
-```
+- Export the test host
+    - export HOST=http://localhost:8080
 
-Start the application server from your IDE or the command line:
-
-```bash
-mvn spring-boot:run
-```
-
-Export the test host
-
-```bash
-export HOST=http://localhost:8080
-```
-
-Now follow the [interaction instructions][interaction].
-
-[acceptance-test]:https://github.com/cloudfoundry-samples/pong_matcher_acceptance
-[pws]:https://run.pivotal.io
-[interaction]:https://github.com/cloudfoundry-samples/pong_matcher_rails/blob/master/README.md#interaction-instructions
+- Follow the 'To test' section above.
